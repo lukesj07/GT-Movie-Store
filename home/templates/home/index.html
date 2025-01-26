@@ -1,9 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Home page</title>
-</head>
-<body>
-  <h1>Welcome to the GT Movie Store</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<header class="masthead bg-index text-center py-4">
+    <div class="container d-flex align-items-center flex-column pt-2">
+        <h2 class="fw-bold">GT Movie Store</h2>
+        <p class="fw-bold">Your Hotspot for Movie Recomendations from other Students!</p>
+    </div>
+</header>
+<div class="p-3">
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col mx-auto text-center mb-3">
+                <h4>Welcome to Tech's student-driven movie recommendation platform</h4>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
