@@ -1,9 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>About page</title>
-</head>
-<body>
-  <h1>Welcome to the GT Movie Store About Page</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="p-3">
+    <div class="container">
+        <div class="row mt-3 align-items-center">
+            <div class="col-md-6 mb-3">
+                <h2>About</h2>
+                <hr />
+                <p>
+                    Welcome to GT Movie Hub, your go-to platform for movie recommendations from fellow 
+                    Georgia Tech students! We've created a community-driven space where Yellow Jackets 
+                    can share and discover great films, making it easier to find your next movie night 
+                    pick between study sessions.
+                </p>
+            
+                <p>
+                    Our platform lets you browse recommendations across all genres. Each review comes from a
+                    real GT student, giving you real perspectives from our diverse campus community.
+                </p>
+            
+                <p>
+                    Join your fellow students in building Tech's own movie recommendation database. 
+                    Whether you're looking for a study break film or planning a movie night with your 
+                    dorm, GT Movie Hub helps you find the perfect watch based on real student experiences.
+                </p>
+            </div>
+        
+            <div class="col-6 text-center">
+                <img src="{% static 'img/about.jpg' %}"
+                    class="img-fluid rounded"
+                    alt="about" />
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
