@@ -9,6 +9,7 @@ class CustomErrorList(ErrorList):
         return mark_safe(''.join({
             f'<div class="alert alert-danger" role-"alert"> {e}</div>' for e in self
         }))
+
 class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
