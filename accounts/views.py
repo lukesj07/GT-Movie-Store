@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from .forms import CustomUserCreationForm, CustomErrorList
-
+from django.contrib.auth.models import User
 
 def signup(request: HttpRequest) -> render: 
     template_data = {}
@@ -48,6 +48,12 @@ def login(request: HttpRequest):
             auth_login(request, user)
             return redirect('home.index')
         
+@login_required
+def orders(request):
+    template_data = {}
+    template_data['title'] = 'Orders'
+    template_data['orders'] = request.user.order_set.all()
+    return render(request, 'accounts/orders.html', {'template_data': template_data})
 
 @login_required
 def logout(request: HttpRequest) -> redirect:
