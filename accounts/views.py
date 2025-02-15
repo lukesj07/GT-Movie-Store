@@ -2,8 +2,29 @@ from django.contrib.auth import login as auth_login, logout as auth_logout, auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
-from .forms import CustomUserCreationForm, CustomErrorList
+from .forms import CustomUserCreationForm, CustomErrorList, ResetPasswordForm
 from django.contrib.auth.models import User
+
+def reset_password(request):
+    template_data = {}
+    template_data['title'] = 'Reset Password'
+    
+    if request.method == 'POST':
+        form = ResetPasswordForm(request.POST, error_class=CustomErrorList)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            new_password = form.cleaned_data['new_password']
+            
+            user = User.objects.get(username=username)
+            user.set_password(new_password)
+            user.save()
+            
+            return redirect('accounts.login')
+    else:
+        form = ResetPasswordForm()
+    
+    template_data['form'] = form
+    return render(request, 'accounts/reset_password.html', {'template_data': template_data})
 
 def signup(request: HttpRequest) -> render: 
     template_data = {}
